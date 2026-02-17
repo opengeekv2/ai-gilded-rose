@@ -95,6 +95,7 @@ change in Quality. Given what is on README.MD how many days do you think we shou
 all behavior described there.
 ```
 
+Summarized output
 ```cmd
 Conclusion
 To capture all behaviors, observing the program for 20 days should be sufficient. This will ensure we see:
