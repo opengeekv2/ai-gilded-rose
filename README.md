@@ -52,7 +52,7 @@ Just for clarification, an item can never have its Quality increase above 50, ho
 Resolution log
 ==============
 
-This kata is being solved at the moment with Rider and the usage of GPT-4.1 in Microsoft Copilot suing its different
+This kata is being solved at the moment with Rider and the usage of GPT-4.1 in Microsoft Copilot using its different
 available modes.
 
 No intructions.md yet.
@@ -112,7 +112,7 @@ It suggested to directly accept the output as first verified output.
 
 ### Verifying output
 
-However I was trusting the output of the software blindly. As it can happen in real legacy projects software behavior
+However I wasn't trusting the output of the software blindly. As it can happen in real legacy projects software behavior
 may differ from documentation. So I thought a cool usage of an LLM agent would be to verify the output against the rules
 described in the readme.
 
