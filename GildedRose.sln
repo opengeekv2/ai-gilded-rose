@@ -9,22 +9,34 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose.Tests", "GildedRose.Tests\GildedRose.Tests.csproj", "{E13B20F3-5C3E-4D9E-8F5E-9F5C5E5E5E5E}"
 EndProject
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose.Tests", "GildedRose.Tests\GildedRose.Tests.csproj", "{F8780572-7648-46A0-AD17-34AF5C171A64}"
+EndProject
+	Global
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		GlobalSection(ProjectConfigurationPlatforms) = postSolution
+			{D781C52B-92C0-48BF-8414-177495DF4174}.|Any CPU.ActiveCfg = |Any CPU
+			{D781C52B-92C0-48BF-8414-177495DF4174}.|Any CPU.Build.0 = |Any CPU
+			{F8780572-7648-46A0-AD17-34AF5C171A64}.|Any CPU.ActiveCfg = Debug|Any CPU
+			{F8780572-7648-46A0-AD17-34AF5C171A64}.|Any CPU.Build.0 = Debug|Any CPU
+		EndGlobalSection
+		GlobalSection(SolutionConfigurationPlatforms) = preSolution
+			|Any CPU = |Any CPU
+		EndGlobalSection
+	EndGlobal
+	Section
+	Global
 		{D781C52B-92C0-48BF-8414-177495DF4174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D781C52B-92C0-48BF-8414-177495DF4174}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D781C52B-92C0-48BF-8414-177495DF4174}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D781C52B-92C0-48BF-8414-177495DF4174}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
+	EndGlobal
+	Section
 		{E13B20F3-5C3E-4D9E-8F5E-9F5C5E5E5E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E13B20F3-5C3E-4D9E-8F5E-9F5C5E5E5E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E13B20F3-5C3E-4D9E-8F5E-9F5C5E5E5E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E13B20F3-5C3E-4D9E-8F5E-9F5C5E5E5E5E}.Release|Any CPU.Build.0 = Release|Any CPU
 		SolutionGuid = {02785EA4-86A5-4E57-9A9A-6998FAE1E617}
-	EndGlobalSection
-EndGlobal
+	Global
+	EndGlobal

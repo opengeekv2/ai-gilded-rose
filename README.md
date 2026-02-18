@@ -125,5 +125,5 @@ README.
 After that I changed the Verify output to "verified"
 
 ```cmd
-As we're using Verify I'd like to copy the received content with teh current implementation output to the verified file
+As we're using Verify I'd like to copy the received content with the current implementation output to the verified file
 ```
