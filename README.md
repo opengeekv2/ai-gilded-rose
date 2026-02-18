@@ -127,3 +127,113 @@ After that I changed the Verify output to "verified"
 ```cmd
 As we're using Verify I'd like to copy the received content with the current implementation output to the verified file
 ```
+
+### Planning refactor
+
+I tried to prompt the Agent mode with GPT 4.1 with this:
+```cmd
+Identify the first most simple refactor that would help us introduce a new special behavior that is that Items that
+start by Conjured degrade twice as fast.
+```
+
+My intention was that it started refactoring easy refactorings however it jumped right to try to solve the problem by
+extracting a degradation rate variable. 
+
+It took some prompts to redirect it to prioritize making teh code human maintainable and extensible and not just fixing
+the problem.
+
+First I set clear limits:
+
+```cmd
+I asked for a refactor not for you to introducet the new functionality. We need some discipline!
+Please don't add newbehavior when I ask for refactor.
+```
+
+However it insisted in extracting the degradation rate as the shortest refactor so I had to try a different way.
+It ran the errors tool and mentioned all the warnings present. Some of them coming from the local Sonar plugin I have.
+
+So I asked:
+
+```cmd
+I this had to be maintained by humans which of those warnigns would worry you more? More than extracting the degradation
+rate.
+```
+
+Response:
+```cmd
+If this code had to be maintained by a team, the warning that would worry me most—more than extracting the degradation rate—would be the high cognitive complexity of the UpdateQuality method. The warning says:
+Refactor this method to reduce its Cognitive Complexity from 69 to the 15 allowed.
+This means the method is very difficult to read, understand, and safely modify. It has deeply nested conditionals and repeated logic, which increases the risk of bugs and makes future changes (like adding new item behaviors) much harder and error-prone.
+Addressing cognitive complexity is more important for maintainability than extracting the degradation rate, because it improves clarity, reduces duplication, and makes the codebase safer for future refactors and feature additions.
+```
+
+Then I asked:
+```cmd
+SO what is the recommendde course fo action to keep the code human maintainable?
+```
+
+Response:
+```cmd
+ow:
+Extract Item-Specific Logic: Move the rules for each item type (e.g., “Aged Brie”, “Sulfuras”, “Backstage passes”, normal items) into separate methods or classes. This is often done using the Strategy or Polymorphism pattern, where each item type has its own update logic.
+Flatten Nested Conditionals: Reduce deep nesting by using early returns or guard clauses, and by separating concerns.
+Clarify Intent: Use descriptive method names and variables to make the code’s purpose clear.
+Avoid Magic Strings: Replace repeated item name strings with constants or enums.
+Unit Test Coverage: Ensure each item rule is covered by tests, so changes are safe.
+Summary of steps:
+Refactor UpdateQuality to delegate to item-specific update methods.
+Create a structure (e.g., ItemUpdater classes) for each item type.
+Make the main loop simple: for each item, call its updater.
+This will make the code much easier to read, modify, and extend for new behaviors (like “Conjured”), and will reduce the risk of bugs. This is the most important maintainability improvement for this codebase.
+```
+
+Finally I asked it to come up with applan to rder refactors by risk and run teh verification tests after each step and
+stop.
+
+```cmd
+Can you order this refactors from less risky to more risky?
+```
+
+Risk assessment output
+```cmd
+Here’s an ordered list of the recommended refactors for your GildedRose.cs code, from less risky to more risky:
+
+Extract Magic Strings to Constants
+Replace item name strings (e.g., "Aged Brie", "Sulfuras, Hand of Ragnaros") with constants.
+Risk: Very low. No logic changes, just improves readability and reduces typo risk.
+
+Extract Degradation Rate to Variable
+Use a variable for the quality degradation rate (e.g., degradeRate = 1).
+Risk: Low. No behavior change, just prepares for future extensibility.
+
+Flatten Nested Conditionals
+Use guard clauses or early returns to reduce nesting.
+Risk: Low to moderate. If done carefully, logic remains unchanged, but mistakes in restructuring could alter flow.
+
+Rename Fields and Parameters for Clarity
+Rename Items to _items (field) and items (parameter) to follow conventions.
+Risk: Low. Only affects naming, but could break code if not updated everywhere.
+
+
+Extract Item-Specific Logic to Methods
+Move logic for each item type into separate methods.
+Risk: Moderate. Increases code clarity, but mistakes in extraction could change behavior.
+
+Introduce Polymorphism/Strategy Pattern
+Create classes or strategies for each item type, and delegate update logic.
+Risk: High. Major structural change; if not covered by tests, could introduce bugs.
+
+Refactor UpdateQuality to Use Item Updaters
+Make UpdateQuality loop simple, calling an updater for each item.
+Risk: High. Relies on correct implementation of updaters; large refactor.
+```
+
+```cmd
+Okay then apply this refactors one by one and run the unit tests in between. Stop after running the tests every time.
+```
+
+
+
+
+
+
