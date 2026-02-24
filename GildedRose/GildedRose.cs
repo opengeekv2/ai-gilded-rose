@@ -15,76 +15,25 @@ public class GildedRose
         this.Items = Items;
     }
 
-    private void DegradeQuality(Item item, int amount = 1)
+    private static readonly Dictionary<string, IItemUpdater> Updaters = new()
     {
-        if (item.Quality > 0 && item.Name != Sulfuras)
-        {
-            item.Quality -= amount;
-        }
-    }
+        { AgedBrie, new AgedBrieUpdater() },
+        { BackstagePasses, new BackstagePassesUpdater() },
+        { Sulfuras, new SulfurasUpdater() }
+    };
 
-    private void UpdateAgedBrie(Item item)
+    private static IItemUpdater GetUpdater(Item item)
     {
-        if (item.Quality < 50)
-        {
-            item.Quality++;
-        }
-    }
-
-    private void UpdateBackstagePasses(Item item)
-    {
-        if (item.Quality < 50)
-        {
-            item.Quality++;
-            if (item.SellIn < 11 && item.Quality < 50)
-            {
-                item.Quality++;
-            }
-            if (item.SellIn < 6 && item.Quality < 50)
-            {
-                item.Quality++;
-            }
-        }
+        if (Updaters.TryGetValue(item.Name, out var updater))
+            return updater;
+        return new NormalItemUpdater();
     }
 
     public void UpdateQuality()
     {
-        for (var i = 0; i < Items.Count; i++)
+        foreach (var item in Items)
         {
-            var item = Items[i];
-            if (item.Name == AgedBrie)
-            {
-                UpdateAgedBrie(item);
-            }
-            else if (item.Name == BackstagePasses)
-            {
-                UpdateBackstagePasses(item);
-            }
-            else
-            {
-                DegradeQuality(item);
-            }
-
-            if (item.Name != Sulfuras)
-            {
-                item.SellIn = item.SellIn - 1;
-            }
-
-            if (item.SellIn < 0)
-            {
-                if (item.Name == AgedBrie)
-                {
-                    UpdateAgedBrie(item);
-                }
-                else if (item.Name == BackstagePasses)
-                {
-                    item.Quality = 0;
-                }
-                else
-                {
-                    DegradeQuality(item);
-                }
-            }
+            GetUpdater(item).Update(item);
         }
     }
 }
