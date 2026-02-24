@@ -236,6 +236,33 @@ Risk: High. Relies on correct implementation of updaters; large refactor.
 Okay then apply this refactors one by one and run the unit tests in between. Stop after running the tests every time.
 ```
 
+Day 3
+
+### Executing refactor
+
+It applied the first refactor in the list successfully. However after that it started suggesting a refactor not present
+in the list.
+
+I asked it to incorporate the new refactor idea to the least and re-assess riskiness of all proposed refactors together
+with it.
+
+That shows us the nuance that although plans may be good, plans are laid out over a context that changes just after the
+first step of the plan has been executed. This shows LLM results are also affected by the evolutionary nature of
+software development.
+
+```cmd
+Apply refactors one by one. check if they've been performed. Run test and wait for confirmation from me that I want it
+applied or for more feedback then continue with the next refactor.
+```
+
+I asked again. I changed the prompt a bit as I saw I've canceled the agent diff but it kept understanding that its
+refactor was already applied
+
+It applied the second refactor flawlessly.
+
+
+
+
 
 
 
