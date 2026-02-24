@@ -23,40 +23,46 @@ public class GildedRose
         }
     }
 
+    private void UpdateAgedBrie(Item item)
+    {
+        if (item.Quality < 50)
+        {
+            item.Quality++;
+        }
+    }
+
+    private void UpdateBackstagePasses(Item item)
+    {
+        if (item.Quality < 50)
+        {
+            item.Quality++;
+            if (item.SellIn < 11 && item.Quality < 50)
+            {
+                item.Quality++;
+            }
+            if (item.SellIn < 6 && item.Quality < 50)
+            {
+                item.Quality++;
+            }
+        }
+    }
+
     public void UpdateQuality()
     {
         for (var i = 0; i < Items.Count; i++)
         {
             var item = Items[i];
-            if (item.Name != AgedBrie && item.Name != BackstagePasses)
+            if (item.Name == AgedBrie)
             {
-                DegradeQuality(item);
+                UpdateAgedBrie(item);
+            }
+            else if (item.Name == BackstagePasses)
+            {
+                UpdateBackstagePasses(item);
             }
             else
             {
-                if (item.Quality < 50)
-                {
-                    item.Quality = item.Quality + 1;
-
-                    if (item.Name == BackstagePasses)
-                    {
-                        if (item.SellIn < 11)
-                        {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
-                        }
-
-                        if (item.SellIn < 6)
-                        {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
-                        }
-                    }
-                }
+                DegradeQuality(item);
             }
 
             if (item.Name != Sulfuras)
@@ -66,23 +72,17 @@ public class GildedRose
 
             if (item.SellIn < 0)
             {
-                if (item.Name != AgedBrie)
+                if (item.Name == AgedBrie)
                 {
-                    if (item.Name != BackstagePasses)
-                    {
-                        DegradeQuality(item);
-                    }
-                    else
-                    {
-                        item.Quality = item.Quality - item.Quality;
-                    }
+                    UpdateAgedBrie(item);
+                }
+                else if (item.Name == BackstagePasses)
+                {
+                    item.Quality = 0;
                 }
                 else
                 {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality = item.Quality + 1;
-                    }
+                    DegradeQuality(item);
                 }
             }
         }

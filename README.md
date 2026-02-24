@@ -282,9 +282,12 @@ applied or for more feedback then continue with the next refactor.
 I asked again. I changed the prompt a bit as I saw I've canceled the agent diff but it kept understanding that its
 refactor was already applied
 
-It applied the second (actually the first in the new list) introducing a local variable item for Items[i] refactor flawlessly.
+It applied the first (actually the first in the new list) introducing a local variable item for Items[i] refactor flawlessly.
 
-I also applied the third (extracting the quality degradation logic into a helper method DegradeQuality) flawlessly
+It also applied the third (extracting the quality degradation logic into a helper method DegradeQuality) flawlessly.
+
+It also applied the forth extracting item-specific logic for Aged Brie and Backstage Passes into separate methods.
+
 
 
 
