@@ -15,6 +15,14 @@ public class GildedRose
         this.Items = Items;
     }
 
+    private void DegradeQuality(Item item, int amount = 1)
+    {
+        if (item.Quality > 0 && item.Name != Sulfuras)
+        {
+            item.Quality -= amount;
+        }
+    }
+
     public void UpdateQuality()
     {
         for (var i = 0; i < Items.Count; i++)
@@ -22,13 +30,7 @@ public class GildedRose
             var item = Items[i];
             if (item.Name != AgedBrie && item.Name != BackstagePasses)
             {
-                if (item.Quality > 0)
-                {
-                    if (item.Name != Sulfuras)
-                    {
-                        item.Quality = item.Quality - 1;
-                    }
-                }
+                DegradeQuality(item);
             }
             else
             {
@@ -68,13 +70,7 @@ public class GildedRose
                 {
                     if (item.Name != BackstagePasses)
                     {
-                        if (item.Quality > 0)
-                        {
-                            if (item.Name != Sulfuras)
-                            {
-                                item.Quality = item.Quality - 1;
-                            }
-                        }
+                        DegradeQuality(item);
                     }
                     else
                     {
