@@ -4,11 +4,15 @@ namespace GildedRoseKata
     {
         public void Update(Item item)
         {
-            if (item.Quality > 0 && item.Name != "Sulfuras, Hand of Ragnaros")
+            // Step 1: Age the item
+            item.SellIn--;
+
+            // Step 2: Regular Quality decrement
+            if (item.Quality > 0)
                 item.Quality--;
-            if (item.Name != "Sulfuras, Hand of Ragnaros")
-                item.SellIn--;
-            if (item.SellIn < 0 && item.Quality > 0 && item.Name != "Sulfuras, Hand of Ragnaros")
+
+            // Step 3: Additional decrement if expired
+            if (item.SellIn < 0 && item.Quality > 0)
                 item.Quality--;
         }
     }

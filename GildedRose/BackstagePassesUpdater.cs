@@ -4,18 +4,26 @@ namespace GildedRoseKata
     {
         public void Update(Item item)
         {
-            if (item.Quality < 50)
-            {
-                item.Quality++;
-                if (item.SellIn < 11 && item.Quality < 50)
-                    item.Quality++;
-                if (item.SellIn < 6 && item.Quality < 50)
-                    item.Quality++;
-            }
+            // Step 1: Age the item
             item.SellIn--;
-            if (item.SellIn < 0)
+
+            // Step 2: Quality adjustment before expiration
+            if (item.SellIn >= 0)
+            {
+                if (item.Quality < 50)
+                {
+                    item.Quality++;
+                    if (item.SellIn < 10 && item.Quality < 50)
+                        item.Quality++;
+                    if (item.SellIn < 5 && item.Quality < 50)
+                        item.Quality++;
+                }
+            }
+            // Step 3: Quality drops to 0 after expiration
+            else
+            {
                 item.Quality = 0;
+            }
         }
     }
 }
-

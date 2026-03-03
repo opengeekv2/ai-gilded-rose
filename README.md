@@ -443,6 +443,44 @@ Summary of Next Refactor Opportunities
 6. Review and expand unit tests for edge cases.
 ```
 
+## Day 4
+
+### Context stubborness
+
+It identified by itself the unnecessary sulfuras check.
+
+I asked it to consider. 
+
+Centralize Quality bounds enforcement.
+4. Consider a base class or utility for common updater logic.
+5. Optionally, refactor the updater mapping for easier extension.
+
+As too early refactor and try to argument them by contirbutinc to cohesion and abstraction.
+
+But the LLM was reclutant to drop them.
+
+It might be an indication that easily falls in love with what it has already generated or has in context.
+
+### Shallow refactoring
+
+A bigger issue is that it overlooked that sell in and quality update are tangled in each updater implementation.
+
+It created a code that while it's modular and abstracted but somehow we just got tangled business logic in small pieces.
+
+Easier to fix bit by bit but it was tangled anyway and the LLM couldn't detect it unless asked for this explicitly.
+
+```cmd
+i'm gonna challenge you to find if there any concepts mixed in the Update methods that could be separated or do sequentially.
+```
+
+Then it found it and suggested a solution that decrements sell in first in all items and then updates quality
+accordingly and it passes all the tests. Asking about arguments on this order it says it's clearer if we pass
+a day before triggering the day passing logic and tests passed. So when pushed or given feedback it detects it.
+
+It seems to me a symptom that is hard for LLMs to spot issues when logic is very tangled and there's not obvious
+conditions labeling them to be separated or extracted.
+ 
+
 
 
 
