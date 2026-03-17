@@ -5,4 +5,3 @@ namespace GildedRoseKata
         void Update(Item item);
     }
 }
-

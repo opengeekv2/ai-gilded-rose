@@ -25,7 +25,9 @@ public class GildedRose
     private static IItemUpdater GetUpdater(Item item)
     {
         if (Updaters.TryGetValue(item.Name, out var updater))
+        {
             return updater;
+        }
         return new NormalItemUpdater();
     }
 

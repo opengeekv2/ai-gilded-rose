@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "documentationRules": {
+      "companyName": "",
+      "documentExposedElements": false,
+      "documentInternalElements": false
+    },
+    "orderingRules": {
+      "usingDirectivesPlacement": "outsideNamespace"
+    },
+    "readabilityRules": {
+      "allowTrailingComma": true
+    },
+    "maintainabilityRules": {
+      "allowExpressionBodiedMembers": true,
+      "allowPatternMatching": true,
+      "allowNullableReferenceTypes": true,
+      "allowLocalFunctions": true
+    },
+    "layoutRules": {
+      "newlineAtEndOfFile": "require"
+    }
+  }
+}
+

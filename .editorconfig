@@ -1,0 +1,25 @@
+# .editorconfig for StyleCop and modern .NET
+root = true
+
+[*.cs]
+dotnet_style_require_accessibility_modifiers = always:suggestion
+csharp_style_expression_bodied_methods = true:suggestion
+csharp_style_expression_bodied_properties = true:suggestion
+csharp_style_pattern_matching = true:suggestion
+csharp_style_null_propagation = true:suggestion
+csharp_style_prefer_switch_expression = true:suggestion
+csharp_style_prefer_local_function = true:suggestion
+csharp_style_prefer_nullable_reference_types = true:suggestion
+csharp_style_prefer_auto_properties = true:suggestion
+csharp_style_prefer_using_var = true:suggestion
+csharp_style_prefer_braces = false:suggestion
+csharp_style_prefer_index_operator = true:suggestion
+csharp_style_prefer_range_operator = true:suggestion
+
+# StyleCop overrides
+# Allow modern idioms, relax legacy rules
+# Disable some outdated rules
+# For example:
+dotnet_diagnostic.SA1000.severity = none
+# Add more as needed
+

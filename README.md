@@ -484,7 +484,7 @@ conditions labeling them to be separated or extracted.
 
 Today the days come with a copilot plugin update in Rider that seems to bring improvements.
 
-I must note that 
+I must note that it has a new monitor for context window and also it triggers the Plan mode at will in Agent mode
 
 This will be the end of my first loop of the Kata.
 
@@ -513,6 +513,26 @@ Behaviors between Zero and One (and possibly back to Zero from One) have been ca
 generalize your design now dealing with More complex Scenarios and Many items being managed. Often there are new
 Boundary conditions to be concerned with. Finally review your work and make sure you consider and Exercise the
 Exceptional things that might happen.
+
+So my prompt was:
+
+```cmd
+Please test all concrete implementations of IItemUpdater using the ZOMBIES technique.
+
+<explanantion of tetsing by zombies>
+
+```
+
+I had to steer it up a bit so it created the assertions with Shouldly which I prefer.
+
+In a new session I plan to add StyleCop for checking format.
+
+```cmd
+Add StyleCop formatting run it and fix style faults however add exceptions so it allows modenr .net idioms that might
+be outdated in teh default settings of stylecop
+```
+
+
  
 
 

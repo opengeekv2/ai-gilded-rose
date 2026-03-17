@@ -14,11 +14,16 @@ namespace GildedRoseKata
                 {
                     item.Quality++;
                     if (item.SellIn < 10 && item.Quality < 50)
+                    {
                         item.Quality++;
+                    }
                     if (item.SellIn < 5 && item.Quality < 50)
+                    {
                         item.Quality++;
+                    }
                 }
             }
+
             // Step 3: Quality drops to 0 after expiration
             else
             {
