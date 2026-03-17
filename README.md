@@ -479,6 +479,40 @@ a day before triggering the day passing logic and tests passed. So when pushed o
 
 It seems to me a symptom that is hard for LLMs to spot issues when logic is very tangled and there's not obvious
 conditions labeling them to be separated or extracted.
+
+## Day 5
+
+Today the days come with a copilot plugin update in Rider that seems to bring improvements.
+
+I must note that 
+
+This will be the end of my first loop of the Kata.
+
+I'm going to start asking the llm to test the different updaters by ZOMBIES proposed by James Greening.
+
+That will allow not only fixing behavior by the program output but of its different components and will allow us to have
+a faster way and more contained way to specify new behaviors for our software.
+
+Testing by zombies is a technique that allows you to test methods bit by bit and also take care of other things than
+behavior.
+
+Z – Zero
+O – One
+M – Many (or More complex)
+B – Boundary Behaviors
+I – Interface definition
+E – Exercise Exceptional behavior
+S – Simple Scenarios, Simple Solutions
+
+When test-driving, guided by ZOMBIES, the first test Scenarios are for Simple post-conditions of a just created object.
+These are the Zero cases. While defining the Zero cases, take care to design the Interface and capture the Boundary
+Behaviors in your test Scenarios. Keep it Simple, both Solutions and Scenarios. You’ll find that hard. Once progress is
+made on the Zero cases, move to the next special Boundary case, testing the Behavior desired when transitioning from
+Zero to One. To do so there are likely other Interfaces to define and use in new test Scenarios. Once the Boundary
+Behaviors between Zero and One (and possibly back to Zero from One) have been captured in tests, move on to start to
+generalize your design now dealing with More complex Scenarios and Many items being managed. Often there are new
+Boundary conditions to be concerned with. Finally review your work and make sure you consider and Exercise the
+Exceptional things that might happen.
  
 
 
