@@ -482,6 +482,8 @@ conditions labeling them to be separated or extracted.
 
 ## Day 5
 
+### Testing by Zombies
+
 Today the days come with a copilot plugin update in Rider that seems to bring improvements.
 
 I must note that it has a new monitor for context window and also it triggers the Plan mode at will in Agent mode
@@ -525,12 +527,46 @@ Please test all concrete implementations of IItemUpdater using the ZOMBIES techn
 
 I had to steer it up a bit so it created the assertions with Shouldly which I prefer.
 
+It created new tests that made sense and passed so tehy were covering current funcionallity for the legacy code we're
+trying to fix behavior of. 
+
 In a new session I plan to add StyleCop for checking format.
+
+### A touch of reformating
 
 ```cmd
 Add StyleCop formatting run it and fix style faults however add exceptions so it allows modenr .net idioms that might
 be outdated in teh default settings of stylecop
 ```
+
+It did quite well and fixed the several style faults as well as added sensible exceptions.
+
+### Kill all mutants
+
+I also asked it to add Stryker mutation tetsing to help the agent identify uncovered test cases.
+
+```cmd
+Add stryker mutation testing, run it and fix mutants.
+```
+
+It struggleed finding teh right command to run and report the mutants but finally got it.
+
+Also when fixing mutants it "forgot" about the Shouldly assertions and try to use plain Xunit assertions.
+
+Probably due to the lack of instructions file and limited context.
+
+It managed to fix a mutant in the main program.
+
+Now the repository is fixing the current behavior and ready to add new functionality.
+
+However beware that mixing snapshot testing with mutation testing can make new snapshots appear in your workspace that
+will have to be deleted after running the mutation testing.
+
+### Adding conjured functionality
+
+
+
+
 
 
  
