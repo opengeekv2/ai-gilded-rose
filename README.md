@@ -455,7 +455,7 @@ Centralize Quality bounds enforcement.
 4. Consider a base class or utility for common updater logic.
 5. Optionally, refactor the updater mapping for easier extension.
 
-As too early refactor and try to argument them by contirbutinc to cohesion and abstraction.
+As too early refactor and try to argument them by contributing to cohesion and abstraction.
 
 But the LLM was reclutant to drop them.
 
@@ -543,7 +543,7 @@ It did quite well and fixed the several style faults as well as added sensible e
 
 ### Kill all mutants
 
-I also asked it to add Stryker mutation tetsing to help the agent identify uncovered test cases.
+I also asked it to add Stryker mutation testing to help the agent identify uncovered test cases.
 
 ```cmd
 Add stryker mutation testing, run it and fix mutants.
@@ -563,6 +563,44 @@ However beware that mixing snapshot testing with mutation testing can make new s
 will have to be deleted after running the mutation testing.
 
 ### Adding conjured functionality
+
+I asked to add the "Conjured behavior" in the readme.
+
+However it did a very short-sighted analysis by not seeing conjured is a property that can be applied to any product and
+also that it can be combined with other updaters.
+
+To solve that we asked first to add a second conjured item to be sure it applies well to both.
+
+It did quite well applying zombies to generate the tests.
+
+## Conclusions of the first loop
+
+* When dealing with legacy code it is good to be able to test as early as possible by comparing outputs
+* Although we get clear specifications of the software it is good to check teh output for original bugs
+  * we can leverage LLMs for guiding the output checking process if output and rules are simple enough and well defined
+  * although we shouldn't trust the full check as is and it's better to go step by step and check that, in our case, day
+    by day
+  * we can also try to get approximations on best inputs for test cases like we did by asking the best day lenght to
+    observe all possible behavior
+* Having Golden Master testing is helpful to tackle the AI automate refactoring of a legacy code with more safety 
+* Plans at low level take some time to get defined and do not stand well the changes they trigger.
+* A model like ChatGPT 4.1 is capable of detecting oportunitis of refactor
+* However it is not able to detect more deep opportunities especially the ones that are more semantic and related to
+  code's domain.
+* LLMs can get obsessed with parts of the context you've been told them to ignore
+* Testing by ZOMBIES can be a good methodic process for LLMs to generate tests and production code. However sometimes
+  the LLMs will be eager to implement everything and then generate tests bit by bit.
+* Relying in LLMs for formatting can have unpredictable results it's better that formating is part of pre-commit hooks
+  or other kinds of harnesses so they're not bypassed.
+* Git hooks that run tests and formatting are a good harness arround the LLM to guide the correctness of their edits and
+  commits.
+* Mutation testing is a good way for the LLM to get feedback to improve its tests cases and code.
+* Without previous analysis and careful description LLMs might choose to do shallow solutions and refactorings.
+* The changes by the LLM might be controlled as it might have the tendency to relax formatting rules or disable mutants.
+
+For the next loops we will be trying to apply the same to an obfuscated version of teh same problem. This wat we'll see
+if the models are being able to generalize to other problems. We'll also try to convert the different processes applied
+to skills or specialized agents or harnesses.
 
 
 
